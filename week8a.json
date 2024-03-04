@@ -1,0 +1,25 @@
+{
+    "rows": [
+      {
+        "name": "Alice",
+        "score": 90
+      },
+      {
+        "name": "Bob",
+        "score": 78
+      },
+      {
+        "name": "Charlie",
+        "score": 92
+      },
+      {
+        "name": "David",
+        "score": 85
+      },
+      {
+        "name": "Eve",
+        "score": 89
+      }
+    ]
+  }
+  

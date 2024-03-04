@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week 1 practice</title>
+    <script>
+        function draw(){
+            var canvas = document.getElementById('mycanvas')
+            var ctx = canvas.getContext('2d')
+
+            ctx.fillStyle = "blue"
+
+            ctx.fillRect(10,10,60,60);
+            ctx.fillRect(100,10,80,26);
+
+            ctx.beginPath();
+            ctx.arc(220,25,25, 0, 2*Math.PI);
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(10, 160);
+            ctx.lineTo(90, 160)
+            ctx.lineTo(50, 110)
+            ctx.closePath();
+            ctx.fill();
+        }
+    </script>
+</head>
+<body onload = 'draw()'>
+
+    <canvas id = 'mycanvas' width = '400px' height = '400px'>
+
+    </canvas>
+    
+</body>
+</html>

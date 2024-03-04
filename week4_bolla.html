@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>barchart canvasjs</title>
+        <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    </head>
+
+    <body>
+        <div id="simpleBar" style="max-width: 1200px; width: 100%;"></div>
+        <script>
+            var chart = new CanvasJS.Chart("simpleBar", {
+                animationEnabled: true,
+                theme: "light1",
+                title:{
+                    text: "Marks of Students"
+                },
+                axisY: {
+                    title: "Marks",
+                    suffix:"M"
+                },
+                axisX: {
+                    title: "Students"
+                },
+                data: [{        
+                    type: "column",  
+                    dataPoints: [      
+                        { y: 20, label: "A" },
+                        { y: 10,  label: "B" },
+                        { y: 15,  label: "C" },
+                        { y: 30,  label: "D" },
+                        { y: 25,  label: "E" },]
+                }]
+            });
+            chart.render();
+            
+        </script>
+    </body>
+</html>

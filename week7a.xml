@@ -1,0 +1,22 @@
+<rows>
+    <row>
+        <name>Alice</name>
+        <score>90</score>
+    </row>
+    <row>
+        <name>Bob</name>
+        <score>78</score>
+    </row>
+    <row>
+        <name>Charlie</name>
+        <score>92</score>
+    </row>
+    <row>
+        <name>David</name>
+        <score>85</score>
+    </row>
+    <row>
+        <name>Eve</name>
+        <score>89</score>
+    </row>
+</rows>

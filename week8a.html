@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            margin: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: black;
+            font-size: 30px;
+        }
+
+        table {
+            margin: 20px;
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Reading Data From JSON</h1>
+
+    <canvas id="mycanvas" height=180 width=100%>
+
+    </canvas>
+
+    <script type=text/javascript>
+        function loadFile(){
+            async  function fetchJson(url){
+                const response = await fetch(url);
+                const jsonData = await response.json();
+                return jsonData;
+            };
+
+            fetchJson('week8a.json').then(jsonData =>{
+                const label = jsonData.rows.map(entry => entry.name);
+                const value = jsonData.rows.map(entry => entry.score);
+
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+
+                // Create table header
+                const headerRow = document.createElement('tr');
+                const headers = ['Name', 'Score'];
+                headers.forEach(headerText => {
+                    const th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                // Create table rows
+                jsonData.rows.forEach(rowData => {
+                    const row = document.createElement('tr');
+                    const nameCell = document.createElement('td');
+                    const scoreCell = document.createElement('td');
+                    nameCell.textContent = rowData.name;
+                    scoreCell.textContent = rowData.score;
+                    row.appendChild(nameCell);
+                    row.appendChild(scoreCell);
+                    tbody.appendChild(row);
+                });
+                table.appendChild(tbody);
+
+                // Append table to the body
+                document.body.appendChild(table);
+            });
+        };
+        loadFile();
+    </script>
+
+</body>
+
+</html>
+                
+                
+                var chartData = {
+                    labels : label,
+                    datasets : [{
+                        label : 'label',
+                        backgroundColor: ["blue", "yellow", "black", "pink"],
+                        data: value,
+                    }]
+
+                }
+                var ctx = document.getElementById('mycanvas').getContext('2d');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: chartData,
+                    options: {
+                        scales: {
+                            y: { beginAtZero:true }
+                        }
+                    }
+                });
+
+            });
+        };
+        loadFile();
+    </script>
+
+</body>
+
+</html>

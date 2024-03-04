@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Bar Chart with Table</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Week 7: reading data from the xml file</h2>
+
+    <canvas id="myBarChart" width="400" height="165"></canvas>
+
+    <!-- Data Table -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>D1</th>
+                <th>Data Value</th>
+            </tr>
+        </thead>
+        <tbody id='tableBody'>
+            <!-- Rows will be added here dynamically -->
+        </tbody>
+    </table>
+
+    <script type='text/javascript'>
+        // Function to load txt file
+        function loadFile() {
+            fetch('week7a.xml')
+                .then(response => response.text())
+                .then(str => {
+                    // Parse the XML string
+                    let parser = new DOMParser();
+                    let xml = parser.parseFromString(str, "text/xml");
+
+                    // Declare the labels and data arrays
+                    var labels = [];
+                    var data = [];
+
+                    // Get all the 'row' elements from the XML
+                    let rows = xml.getElementsByTagName('row');
+
+                    // Loop through the rows of the data
+                    for (let i = 0; i < rows.length; i++) {
+                        // Get the value of the ith row
+                        let row = rows[i];
+                        // Get the label and value from the row element
+                        let label = row.getElementsByTagName('name')[0].textContent;
+                        let value = row.getElementsByTagName('score')[0].textContent;
+                        // Push the label and value to the arrays
+                        labels.push(label);
+                        data.push(value);
+                        // Create a table row element
+                        var tr = document.createElement("tr");
+                        // Create a table cell element for the label
+                        var td1 = document.createElement("td");
+                        td1.textContent = label;
+                        // Create a table cell element for the value
+                        var td2 = document.createElement("td");
+                        td2.textContent = value;
+                        // Append the cells to the row
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        // Append the row to the table body
+                        document.getElementById('tableBody').appendChild(tr);
+                    }
+
+
+                    // Draw chart
+                    var chartData = {
+                        labels: labels,
+                        datasets: [{
+                            label: "Data",
+                            backgroundColor: ["blue", "yellow", "black", "pink"],
+                            data: data,
+                        }]
+                    };
+
+                    var ctx = document.getElementById('myBarChart').getContext('2d');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: chartData,
+                        options: {
+                            scales: {
+                                y: { beginAtZero: true }
+                            }
+                        }
+                    });
+                });
+        }
+
+        loadFile();
+    </script>
+
+</body>
+
+</html>

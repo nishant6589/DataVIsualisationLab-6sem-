@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script>
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+
+            title: {
+                text: "SEM MARKLIST"
+            },
+            axisX: {
+                interval: 1
+            },
+            axisY2: {
+                interlacedColor: "rgba(1,77,101,.2)",
+                gridColor: "rgba(1,77,101,.1)",
+                title: "marks"
+            },
+            data: [{
+                type: "bar",
+                name: "marks",
+                axisYType: "secondary",
+                color: "#014D65",
+                dataPoints: [
+                    { y: 9.15, label: "sem1" },
+                    { y: 9, label: "sem2" },
+                    { y: 9.47, label: "sem3" },
+                    { y: 9.16, label: "sem4" },
+                ]
+            }]
+        });
+        chart.render()
+
+    </script>
+</head>
+
+<body>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+
+</html>
