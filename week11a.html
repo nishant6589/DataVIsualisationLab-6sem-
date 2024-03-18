@@ -1,27 +1,28 @@
- <!-- Develop Following Program Using HTML5 and Google Charts API 
+<!-- Develop Following Program Using HTML5 and Google Charts API 
 and Map API(Consider Market Analysis Data) 
 a. Using Google Charts API Basics draw charts like a Bar chart -->
-    
+
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="text/javascript" 
-    src="https://www.gstatic.com/charts/loader.js"> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
     </script>
 
     <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']}); 
+        google.charts.load('current', { 'packages': ['corechart'] }); 
     </script>
 </head>
+
 <body>
-    <div id = "c" style="width:400px; height:350px; margin: : 0 auto;"></div>
+    <div id="c" style="width:400px; height:350px; margin: 0 auto;"></div>
 
     <script>
-        function chart(){
+        function chart() {
             var data = google.visualization.arrayToDataTable([
                 ['year', 'asia'],
                 ['2012', 900],
@@ -30,13 +31,14 @@ a. Using Google Charts API Basics draw charts like a Bar chart -->
                 ['2013', 900]
             ]);
 
-            var op = {title:'Population(in millions)'};
+            var op = { title: 'Population(in millions)' };
             var chart = new google.visualization.BarChart(document.getElementById("c"));
             chart.draw(data, op);
         }
         google.charts.setOnLoadCallback(chart);
     </script>
-        
-        
+
+
 </body>
+
 </html>

@@ -1,0 +1,33 @@
+<!--  Using Google Charts API Basics draw charts like a Line chart -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 11b</title>
+    <script type = "text/javascript" src="https://www.gstatic.com/charts/loader.js">
+    </script>
+
+    <script type = "text/javascript">
+        google.charts.load("current", {packages:["imagelinechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart(){
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Sales', 'Expenses'],
+                ['2004', 1000, 400],
+                ['2005', 1170, 460],
+                ['2006', 660, 1120],
+                ['2007', 1030, 540]
+            ]);
+
+            var chart = new google.visualization.ImageLineChart(document.getElementById('chart_div'));
+
+            chart.draw(data, {width:400, height:240, min: 0});
+        }
+    </script>
+</head>
+<body>
+    <div id="chart_div" style="width: 400px; height: 240px;"></div>
+</body>
+</html>
