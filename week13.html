@@ -1,0 +1,40 @@
+<!--
+
+Develop Following Program Using HTML5 and Google Chats API and Map 
+API 
+a. Draw Candle Chart. 
+b. Draw other types of Chart 
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["imagechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var options = {};
+            dataTable = google.visualization.arrayToDataTable([
+                ['Gainers', 10, 30, 45, 60],
+                ['Losers', 20, 35, 25, 45],
+            ], true);
+
+            var chart = new google.visualization.ImageCandlestickChart(document.getElementById('chart_div')); 
+            chart.draw(dataTable, options);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 400px; height: 240px;"></div>
+</body>
+
+</html>
